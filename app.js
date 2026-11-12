@@ -52,11 +52,10 @@ app.post("/chat", async (req, res) => {
     }));
 
     const completion = await client.chat.completions.create({
-      model: MODEL,
-      messages: [{ role: "system", content: SYSTEM_PROMPT }, ...FEW_SHOT, ...safeMessages],
-      max_tokens: 1500,
-      reasoning_effort: "low",
-    });
+  model: MODEL,
+  messages: [{ role: "system", content: SYSTEM_PROMPT }, ...FEW_SHOT, ...safeMessages],
+  max_tokens: 1500,
+});
 
     res.json({ reply: completion.choices[0].message.content });
   } catch (err) {
